@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { FiInfo, FiMessageSquare, FiCheckCircle } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import { Issue, State } from "../interfaces";
 
 interface Props {
@@ -7,11 +8,11 @@ interface Props {
 }
 
 export const IssueItem: FC<Props> = ({ issue }) => {
-
     const {state, title, number, user, comments} = issue
+    const navigate = useNavigate()
 
   return (
-    <div className="card mb-2 issue">
+    <div className="card mb-2 issue" onClick={() => navigate(`/issues/issue/${number}`)}>
       <div className="card-body d-flex align-items-center">
         {state === State.Closed ? (
           <FiCheckCircle size={30} color="green" />
