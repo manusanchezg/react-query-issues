@@ -3,14 +3,14 @@ import { githubAPI } from "../../api/githubAPI";
 import { sleep } from "../../helpers/sleep";
 import { Issue } from "../interfaces";
 
-const getIssueInfo = async (issueNumber: number): Promise<Issue> => {
-  await sleep(2);
+export const getIssueInfo = async (issueNumber: number): Promise<Issue> => {
+  // await sleep(2);
   const { data } = await githubAPI.get<Issue>(`/issues/${issueNumber}`);
   return data;
 };
 
-const getIssueComments = async (issueNumber: number): Promise<Issue[]> => {
-  await sleep(2);
+export const getIssueComments = async (issueNumber: number): Promise<Issue[]> => {
+  // await sleep(2);
   const { data } = await githubAPI.get<Issue[]>(
     `/issues/${issueNumber}/comments`
   );
